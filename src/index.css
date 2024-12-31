@@ -28,9 +28,9 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  padding: 1.5rem;
+  padding: 2rem;
   width: 100%;
-  max-width: 100%;
+  max-width: 1600px;
   min-height: 100vh;
   margin: 0 auto;
   box-sizing: border-box;
@@ -49,6 +49,17 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1.5rem;
+  }
+  
+  .bento-card.col-span-3 {
+    grid-column: span 2;
+  }
+}
+
 @media (max-width: 768px) {
   .bento-grid {
     grid-template-columns: 1fr;
@@ -57,5 +68,10 @@
   
   .bento-card {
     min-height: 150px;
+  }
+  
+  .bento-card.col-span-2,
+  .bento-card.col-span-3 {
+    grid-column: span 1;
   }
 }

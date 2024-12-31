@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail, Globe, FileText, MapPin, ExternalLink } from "lucide-react";
 
 const Index = () => {
   const [time, setTime] = useState(new Date());
@@ -16,72 +16,148 @@ const Index = () => {
         <div className="bento-card col-span-2">
           <h2 className="text-sm text-gray-400 mb-2">welcome</h2>
           <h1 className="text-4xl font-bold mb-4">
-            Hi, I'm <span className="text-blue-400">Your Name</span>
+            Hi, I'm <span className="text-blue-400">Aditya Kumar</span>
           </h1>
           <p className="text-gray-300 text-lg">
-            A software developer with a passion for creating beautiful and functional web experiences
+            Operations Analyst at CertifyOs with expertise in automation and data analysis
+          </p>
+          <div className="flex space-x-6 mt-6 justify-center">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+               className="p-3 rounded-full hover:bg-gray-800 transition-colors">
+              <Linkedin className="w-6 h-6" />
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" 
+               className="p-3 rounded-full hover:bg-gray-800 transition-colors">
+              <Github className="w-6 h-6" />
+            </a>
+            <a href="mailto:theadityakarn@gmail.com"
+               className="p-3 rounded-full hover:bg-gray-800 transition-colors">
+              <Mail className="w-6 h-6" />
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer"
+               className="p-3 rounded-full hover:bg-gray-800 transition-colors">
+              <Globe className="w-6 h-6" />
+            </a>
+          </div>
+        </div>
+
+        {/* Location & Contact Card */}
+        <div className="bento-card">
+          <div className="flex items-center mb-4">
+            <MapPin className="w-5 h-5 mr-2" />
+            <span className="text-lg">Bangalore, KA</span>
+          </div>
+          <p className="text-gray-300">
+            <span className="font-semibold">Phone:</span> +91-8766355123
+          </p>
+          <p className="text-gray-300">
+            <span className="font-semibold">Email:</span> theadityakarn@gmail.com
           </p>
         </div>
 
-        {/* About Card */}
-        <div className="bento-card row-span-2">
-          <h2 className="text-2xl font-bold mb-6">About me</h2>
-          <p className="text-gray-300 text-lg mb-6">
-            I specialize in building modern web applications using React, TypeScript, and other cutting-edge technologies.
-          </p>
-          <div className="space-y-4">
-            <p className="text-lg text-gray-400">My tools:</p>
-            <ul className="list-disc list-inside text-gray-300 text-lg space-y-2">
-              <li>React</li>
-              <li>TypeScript</li>
-              <li>Node.js</li>
-              <li>Tailwind CSS</li>
+        {/* Experience Card */}
+        <div className="bento-card col-span-3">
+          <h2 className="text-2xl font-bold mb-6">Professional Experience</h2>
+          <div className="mb-4">
+            <div className="flex justify-between items-center mb-2">
+              <h3 className="text-xl font-semibold">Operations Analyst, Credentialing</h3>
+              <span className="text-gray-400">March 2023 - Present</span>
+            </div>
+            <h4 className="text-lg text-blue-400 mb-3">CertifyOs (Remote)</h4>
+            <ul className="list-disc list-inside text-gray-300 space-y-2">
+              <li>Automated outreach processes using Google Apps Script, reducing manual effort by 20+ hours weekly</li>
+              <li>Executed comprehensive verification of healthcare providers' credentials</li>
+              <li>Developed automated reporting solutions using Google Apps Script and BigQuery SQL</li>
+              <li>Collaborated with cross-functional teams to optimize processes and implement data-driven solutions</li>
             </ul>
           </div>
         </div>
 
-        {/* Time Card */}
-        <div className="bento-card">
-          <h2 className="text-lg text-gray-400 mb-4">Current Time</h2>
-          <p className="text-3xl font-bold font-mono">
-            {time.toLocaleTimeString()}
-          </p>
-        </div>
-
-        {/* Contact Card */}
-        <div className="bento-card">
-          <h2 className="text-2xl font-bold mb-6">Let's Connect</h2>
-          <div className="flex space-x-6">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" 
-               className="p-3 rounded-full hover:bg-gray-800 transition-colors">
-              <Github className="w-8 h-8" />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
-               className="p-3 rounded-full hover:bg-gray-800 transition-colors">
-              <Linkedin className="w-8 h-8" />
-            </a>
-            <a href="mailto:your@email.com"
-               className="p-3 rounded-full hover:bg-gray-800 transition-colors">
-              <Mail className="w-8 h-8" />
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-               className="p-3 rounded-full hover:bg-gray-800 transition-colors">
-              <Twitter className="w-8 h-8" />
-            </a>
+        {/* Skills Card */}
+        <div className="bento-card col-span-2">
+          <h2 className="text-2xl font-bold mb-6">Skills & Tools</h2>
+          <div className="grid grid-cols-2 gap-6">
+            <div>
+              <h3 className="text-lg font-semibold mb-3">Technical Skills</h3>
+              <ul className="text-gray-300 space-y-2">
+                <li>Python (Pandas, Numpy, Seaborn)</li>
+                <li>SQL</li>
+                <li>Data Analysis</li>
+                <li>Web Scraping</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-3">Tools</h3>
+              <ul className="text-gray-300 space-y-2">
+                <li>Tableau, PowerBI</li>
+                <li>Excel, GSheets</li>
+                <li>Jupyter Notebook</li>
+                <li>Looker Studio</li>
+              </ul>
+            </div>
           </div>
         </div>
 
+        {/* Certifications Card */}
+        <div className="bento-card">
+          <h2 className="text-2xl font-bold mb-6">Certifications</h2>
+          <ul className="text-gray-300 space-y-4">
+            <li>Business Statistics and Analysis Specialization By Rice University</li>
+            <li>Data Warehousing and BI Analytics By IBM</li>
+          </ul>
+        </div>
+
         {/* Projects Card */}
-        <div className="bento-card col-span-2">
+        <div className="bento-card col-span-3">
           <h2 className="text-2xl font-bold mb-6">Featured Projects</h2>
           <div className="grid grid-cols-2 gap-6">
             <div className="p-6 bg-card-hover rounded-lg">
-              <h3 className="text-xl font-bold mb-3">Project 1</h3>
-              <p className="text-gray-300">Description of your amazing project</p>
+              <div className="flex justify-between items-center mb-3">
+                <h3 className="text-xl font-bold">Premier League Analysis</h3>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="w-5 h-5" />
+                </a>
+              </div>
+              <p className="text-gray-300">Data analysis using Python libraries with interactive Plotly graphs</p>
             </div>
             <div className="p-6 bg-card-hover rounded-lg">
-              <h3 className="text-xl font-bold mb-3">Project 2</h3>
-              <p className="text-gray-300">Description of another cool project</p>
+              <div className="flex justify-between items-center mb-3">
+                <h3 className="text-xl font-bold">Google Sheets Automation</h3>
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="w-5 h-5" />
+                </a>
+              </div>
+              <p className="text-gray-300">Web scraping and automation tool for news and stock tracking</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Education Card */}
+        <div className="bento-card col-span-2">
+          <h2 className="text-2xl font-bold mb-6">Education</h2>
+          <div className="mb-4">
+            <div className="flex justify-between items-center mb-2">
+              <h3 className="text-xl font-semibold">Bachelor of Science</h3>
+              <span className="text-gray-400">Dec 2023</span>
+            </div>
+            <h4 className="text-lg text-blue-400 mb-3">Indira Gandhi National Open University, New Delhi</h4>
+            <p className="text-gray-300">
+              Relevant Coursework: Calculus, Linear Algebra, Statistical Techniques, Business Communication
+            </p>
+          </div>
+        </div>
+
+        {/* Languages & Interests Card */}
+        <div className="bento-card">
+          <h2 className="text-2xl font-bold mb-6">Languages & Interests</h2>
+          <div className="space-y-4">
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Languages</h3>
+              <p className="text-gray-300">Hindi, English</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Interests</h3>
+              <p className="text-gray-300">Technology, Hiking, Football, Fitness</p>
             </div>
           </div>
         </div>
