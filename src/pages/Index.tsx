@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import { Github, Linkedin, Mail, Globe, FileText, MapPin, ExternalLink } from "lucide-react";
+import { Github, Linkedin, Mail, Globe, FileText, MapPin, ExternalLink, Plus, ChevronRight } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const Index = () => {
   const [time, setTime] = useState(new Date());
@@ -8,6 +15,42 @@ const Index = () => {
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
+
+  const projects = [
+    {
+      title: "Premier League(20-21) Data Analysis",
+      link: "#",
+      description: "Conducted data analysis using Python libraries like Pandas and NumPy for data mining and processing, and visualized results with interactive Plotly graphs for enhanced data insights.",
+      tech: ["Python", "Pandas", "NumPy", "Plotly"],
+    },
+    {
+      title: "Google Sheets Automation",
+      link: "#",
+      description: "Created a Python script using BeautifulSoup and Requests to scrape news from Google News, and integrated it with the Google Sheets API for seamless data transfer and real-time updates. Developed an automated script to track stock performance and daily news updates.",
+      tech: ["Python", "BeautifulSoup", "Google Sheets API"],
+    },
+    {
+      title: "Top Biryani Places Delhi/NCR",
+      link: "#",
+      description: "Scraped data from websites like Dineout.in using Python (BeautifulSoup and Requests), preprocessed the data in Excel, and developed visualizations in Tableau for insightful analysis.",
+      tech: ["Python", "BeautifulSoup", "Tableau"],
+    },
+  ];
+
+  const travelPhotos = [
+    {
+      url: "https://images.unsplash.com/photo-1472396961693-142e6e269027",
+      caption: "Exploring the Mountains",
+    },
+    {
+      url: "https://images.unsplash.com/photo-1493962853295-0fd70327578a",
+      caption: "Wildlife Adventure",
+    },
+    {
+      url: "https://images.unsplash.com/photo-1485833077593-4278bba3f11f",
+      caption: "Nature's Beauty",
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-[#121212] text-white">
@@ -107,28 +150,70 @@ const Index = () => {
           </ul>
         </div>
 
-        {/* Projects Card */}
+        {/* Projects Section */}
+        <Dialog>
+          <DialogTrigger asChild>
+            <div className="bento-card col-span-3 cursor-pointer group">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-2xl font-bold">Featured Projects</h2>
+                <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {projects.map((project, index) => (
+                  <div key={index} className="bg-card-hover rounded-lg p-4 transition-all hover:scale-105">
+                    <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
+                    <p className="text-gray-400 text-sm line-clamp-2">{project.description}</p>
+                  </div>
+                ))}
+              </div>
+              <span className="text-sm text-blue-400 mt-4 block group-hover:underline">
+                Click to view more details
+              </span>
+            </div>
+          </DialogTrigger>
+          <DialogContent className="max-w-4xl">
+            <DialogHeader>
+              <DialogTitle>My Projects</DialogTitle>
+            </DialogHeader>
+            <div className="space-y-6">
+              {projects.map((project, index) => (
+                <div key={index} className="bg-card-hover rounded-lg p-6">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-xl font-bold">{project.title}</h3>
+                    <a href={project.link} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="w-5 h-5" />
+                    </a>
+                  </div>
+                  <p className="text-gray-300 mb-4">{project.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech, i) => (
+                      <span key={i} className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </DialogContent>
+        </Dialog>
+
+        {/* Travel Pictures Section */}
         <div className="bento-card col-span-3">
-          <h2 className="text-2xl font-bold mb-6">Featured Projects</h2>
-          <div className="grid grid-cols-2 gap-6">
-            <div className="p-6 bg-card-hover rounded-lg">
-              <div className="flex justify-between items-center mb-3">
-                <h3 className="text-xl font-bold">Premier League Analysis</h3>
-                <a href="#" target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="w-5 h-5" />
-                </a>
+          <h2 className="text-2xl font-bold mb-6">Travel Adventures</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {travelPhotos.map((photo, index) => (
+              <div key={index} className="group relative aspect-video overflow-hidden rounded-lg">
+                <img
+                  src={photo.url}
+                  alt={photo.caption}
+                  className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                  <p className="text-white p-4">{photo.caption}</p>
+                </div>
               </div>
-              <p className="text-gray-300">Data analysis using Python libraries with interactive Plotly graphs</p>
-            </div>
-            <div className="p-6 bg-card-hover rounded-lg">
-              <div className="flex justify-between items-center mb-3">
-                <h3 className="text-xl font-bold">Google Sheets Automation</h3>
-                <a href="#" target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="w-5 h-5" />
-                </a>
-              </div>
-              <p className="text-gray-300">Web scraping and automation tool for news and stock tracking</p>
-            </div>
+            ))}
           </div>
         </div>
 
